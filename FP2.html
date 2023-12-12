@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('https://img.freepik.com/free-photo/colorful-wallpaper-background-multicolored-generative-ai_91128-2257.jpg?w=996&t=st=1702367482~exp=1702368082~hmac=d8cc9d693c4fdd88d7b04b9591bb48e690809b4adb59073aa6bf544750a3eeff');
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    #profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px auto;
+      display: block;
+    }
+
+    section {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: clear;
+      border: none;
+      cursor: pointer;
+    }
+
+    #dark-mode-toggle {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Capoy, Keren Kim M.</h1>
+    <img id="profile-picture" src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/393192257_903641154724054_5230960141639089015_n.jpg?stp=dst-jpg_s403x403&_nc_cat=106&ccb=1-7&_nc_sid=510075&_nc_eui2=AeH0aQt0_XItITORvcESVcKdOv5zLsLvJhw6_nMuwu8mHHYfvIFHR3iDJ4s3YMeC1i3py851qBm2i1QuLDE2XEfQ&_nc_ohc=5Gi8SP0UGw4AX-cCdR-&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdRu794wQHkXo19msVIe6ksisakjP68BYKLUqKEw5chBJg&oe=659F9A24" alt="https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.15752-9/393192257_903641154724054_5230960141639089015_n.jpg?stp=dst-jpg_s403x403&_nc_cat=106&ccb=1-7&_nc_sid=510075&_nc_eui2=AeH0aQt0_XItITORvcESVcKdOv5zLsLvJhw6_nMuwu8mHHYfvIFHR3iDJ4s3YMeC1i3py851qBm2i1QuLDE2XEfQ&_nc_ohc=5Gi8SP0UGw4AX-cCdR-&_nc_ht=scontent.fmnl4-2.fna&oh=03_AdRu794wQHkXo19msVIe6ksisakjP68BYKLUqKEw5chBJg&oe=659F9A24">
+  </header>
+
+  <style>
+    .content {
+        display: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .content.show {
+        display: block;
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .content.hide {
+        display: none;
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+</style>
+</head>
+<body>
+<section>
+    <ul>
+        <li class="list-item" data-content="about-me-content">About Me</li>
+        <li class="list-item" data-content="education-content">Education</li>
+        <li class="list-item" data-content="skills-content">Skills</li>
+        <li class="list-item" data-content="contact-info-content">Contact Information</li>
+    </ul>
+
+    <div class="content hide" id="about-me-content">
+        <h2>About Me</h2>
+        <p>Age: 19</p>
+        <p>Place of Birth: Seoul South Korea</p>
+        <p>Status: Single</p>
+        <p>Nationality: Filipino</p>
+
+    </div>
+
+    <div class="content hide" id="education-content">
+        <h2>Education</h2>
+        <ul>
+            <li><strong>University of the Cordillera</strong>, Bachelor's in Information Techology</li>
+        </ul>
+    </div>
+
+    <div class="content hide" id="skills-content">
+        <h2>Skills</h2>
+        <ul>
+            <li>Time Management</li>
+            <li>Problem Solving</li>
+            <li>Hard Working</li>
+        </ul>
+    </div>
+
+    <div class="content hide" id="contact-info-content">
+        <h2>Contact Information</h2>
+        <ul>
+            <li>Email: kerenkimmathias@gmail.com</li>
+            <li>Phone: 09951773010</li>
+        </ul>
+    </div>
+</section>
+
+<script>
+    const listItems = document.querySelectorAll('.list-item');
+    
+    listItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const contentId = this.getAttribute('data-content');
+            const content = document.getElementById(contentId);
+
+            // Toggle the 'show' class on the clicked content and hide others
+            listItems.forEach(otherItem => {
+                const otherContentId = otherItem.getAttribute('data-content');
+                const otherContent = document.getElementById(otherContentId);
+                if (otherItem !== item) {
+                    otherContent.classList.remove('show');
+                    otherContent.classList.add('hide');
+                }
+            });
+
+            content.classList.toggle('show');
+            content.classList.toggle('hide');
+        });
+    });
+</script>
+</body>
+</html>
+
+<div class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</div>
+
+<script>
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+        const body = document.body;
+        body.classList.toggle("dark-mode");
+    }
+
+    // Form Validation (Simple alert for demonstration purposes)
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Form submitted! (This is a demo, actual submission logic can be added)");
+    });
+</script>
+</body>
+</html>
+
+
